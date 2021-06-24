@@ -27,7 +27,7 @@ static THREAD_FUNCTION_RETURN_TYPE control_loop(void* args)
         //robot.acquire_sensors();
 
         // print -----------------------------------------------------------
-        if ((count % 1000) == 0)
+        /*if ((count % 1000) == 0)
         {
             rt_printf("\33[H\33[2J");  // clear screen
             rt_printf("Sensory data:");
@@ -68,7 +68,7 @@ static THREAD_FUNCTION_RETURN_TYPE control_loop(void* args)
                       robot.has_error() ? "true" : "false");
             rt_printf("\n");
             fflush(stdout);
-        } 
+        }*/ 
         ++count;
 
         // Send the current to the motor

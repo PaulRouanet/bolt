@@ -1,6 +1,8 @@
 #include "bolt/bolt.hpp"
 #include "bolt/utils.hpp"
 
+#include <iostream>
+
 using namespace bolt;
 
 static THREAD_FUNCTION_RETURN_TYPE control_loop(void* args)
@@ -9,6 +11,11 @@ static THREAD_FUNCTION_RETURN_TYPE control_loop(void* args)
 
     // 0 torques
     Eigen::Vector6d desired_torque = Eigen::Vector6d::Zero();
+    
+    std::cout << "desired_torque(0,0) : " << desired_torque(0,0) << std::endl;
+//    std::cout << "desired_torque(1,0) : " << desired_torque(1,0) << std::endl;
+//    std::cout << "desired_torque(5,0) : " << desired_torque(5,0) << std::endl;
+
     rt_printf("Sensor reading loop started \n");
 
     robot.wait_until_ready();
@@ -20,31 +27,31 @@ static THREAD_FUNCTION_RETURN_TYPE control_loop(void* args)
         robot.acquire_sensors();
 
         // print -----------------------------------------------------------
-   /*     if ((count % 1000) == 0)
+        /*if ((count % 1000) == 0)
         {
             rt_printf("\33[H\33[2J");  // clear screen
             rt_printf("Sensory data:");
             rt_printf("\n");
-//            print_vector("des joint_tau                  ",
-//                         desired_torque);
-//            print_vector("act joint_pos                  ",
-//                         robot.get_joint_positions());
-//            print_vector("act joint_vel                  ",
-//                         robot.get_joint_velocities());
-//            print_vector("act joint torq                 ",
-//                         robot.get_joint_target_torques());
-//            print_vector("act joint target torq          ",
-//                         robot.get_joint_torques());
-//            print_vector_bool("act status motor ready         ",
-//                         robot.get_motor_ready());
-//            print_vector_bool("act status motor enabled       ",
-//                         robot.get_motor_enabled());
-//            print_vector_bool("act status motor board enabled ",
-//                         robot.get_motor_board_enabled());
-//            print_vector_int("act status motor board errors  ",
-//                         robot.get_motor_board_errors());
-//            print_vector("act slider pos                 ",
-//                         robot.get_slider_positions());
+            print_vector("des joint_tau                  ",
+                         desired_torque);
+            print_vector("act joint_pos                  ",
+                         robot.get_joint_positions());
+            print_vector("act joint_vel                  ",
+                         robot.get_joint_velocities());
+            print_vector("act joint torq                 ",
+                         robot.get_joint_target_torques());
+            print_vector("act joint target torq          ",
+                         robot.get_joint_torques());
+            print_vector_bool("act status motor ready         ",
+                         robot.get_motor_ready());
+            print_vector_bool("act status motor enabled       ",
+                         robot.get_motor_enabled());
+            print_vector_bool("act status motor board enabled ",
+                         robot.get_motor_board_enabled());
+            print_vector_int("act status motor board errors  ",
+                         robot.get_motor_board_errors());
+            print_vector("act slider pos                 ",
+                         robot.get_slider_positions());
             print_vector("act imu quat                   ",
                          robot.get_base_attitude_quaternion());
             print_vector("act imu rpy                    ",
@@ -61,7 +68,7 @@ static THREAD_FUNCTION_RETURN_TYPE control_loop(void* args)
                       robot.has_error() ? "true" : "false");
             rt_printf("\n");
             fflush(stdout);
-        } */
+        }*/ 
         ++count;
 
         // Send the current to the motor

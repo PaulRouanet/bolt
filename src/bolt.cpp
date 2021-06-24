@@ -116,8 +116,11 @@ void Bolt::acquire_sensors()
     base_linear_acceleration_ = robot_->imu->GetLinearAcceleration();
 
     // acquire the slider positions
+
+
     if (serial_reader_->fill_vector(slider_box_data_) > 10)
     {
+
         robot_->ReportError();
         if(nb_time_we_acquired_sensors_ % 2000 == 0)
         {

@@ -61,3 +61,7 @@ create_demo(bolt_demo_pd)
 create_demo(bolt_demo_calibration)
 
 create_demo(bolt_demo_sensor_reading)
+
+create_demo(bolt_demo_calibration_test)
+
+create_demo(bolt_demo_sensor_reading_test)

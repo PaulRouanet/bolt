@@ -19,10 +19,8 @@ static THREAD_FUNCTION_RETURN_TYPE control_loop(void* robot_void_ptr)
     real_time_tools::Spinner spinner;
     spinner.set_period(0.001);
     rt_printf("Running calibration...\n");
-//    rt_printf("Test 1\n");
     while (!CTRL_C_DETECTED && robot.is_calibrating())
     {
-//        rt_printf("Test 2\n");
         robot.acquire_sensors();
         robot.send_target_joint_torque(zero_torques);
         spinner.spin();

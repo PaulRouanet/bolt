@@ -12,6 +12,13 @@ static THREAD_FUNCTION_RETURN_TYPE control_loop(void* args)
     // 0 torques
     Eigen::Vector6d desired_torque = Eigen::Vector6d::Zero();
     
+//    desired_torque(0,0) = 0.2;
+//    desired_torque(1,0) = 0.3;
+//    desired_torque(2,0) = 0.1;
+//    desired_torque(3,0) = 0.2;
+//    desired_torque(4,0) = 0.25;
+//    desired_torque(5,0) = 0.15;
+    
     std::cout << "desired_torque(0,0) : " << desired_torque(0,0) << std::endl;
 //    std::cout << "desired_torque(1,0) : " << desired_torque(1,0) << std::endl;
 //    std::cout << "desired_torque(5,0) : " << desired_torque(5,0) << std::endl;

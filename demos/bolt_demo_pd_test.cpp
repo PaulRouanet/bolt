@@ -46,10 +46,17 @@ static THREAD_FUNCTION_RETURN_TYPE control_loop(void* args)
         motor_enabled = robot.get_motor_enabled();
 
         // Desired pose and vel
-        desired_joint_position =
+/*        desired_joint_position =
             initial_joint_positions +
             Eigen::Vector6d::Ones() * amplitude * sin(2 * M_PI * freq * t);
-        t += dt;
+        t += dt;*/
+        
+        desired_joint_position(0,0) = initial_joint_positions(0,0) + 0;
+        desired_joint_position(1,0) = initial_joint_positions(1,0) + 1;
+        desired_joint_position(2,0) = initial_joint_positions(2,0) - 1;
+        desired_joint_position(3,0) = initial_joint_positions(3,0) + 0;
+        desired_joint_position(4,0) = initial_joint_positions(4,0) + 0;
+        desired_joint_position(5,0) = initial_joint_positions(5,0) + 0;
 
         // we implement here a small pd control at the current level
         desired_torque =

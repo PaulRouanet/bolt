@@ -24,10 +24,10 @@ static THREAD_FUNCTION_RETURN_TYPE control_loop(void* args)
     while (!CTRL_C_DETECTED)
     {
         // acquire the sensors
-        //robot.acquire_sensors();
+        robot.acquire_sensors();
 
         // print -----------------------------------------------------------
-        /*if ((count % 1000) == 0)
+        if ((count % 1000) == 0)
         {
             rt_printf("\33[H\33[2J");  // clear screen
             rt_printf("Sensory data:");
@@ -50,8 +50,8 @@ static THREAD_FUNCTION_RETURN_TYPE control_loop(void* args)
                          robot.get_motor_board_enabled());
             print_vector_int("act status motor board errors  ",
                          robot.get_motor_board_errors());
-            print_vector("act slider pos                 ",
-                         robot.get_slider_positions());
+/*            print_vector("act slider pos                 ",
+                         robot.get_slider_positions());*/
             print_vector("act imu quat                   ",
                          robot.get_base_attitude_quaternion());
             print_vector("act imu rpy                    ",
@@ -62,18 +62,18 @@ static THREAD_FUNCTION_RETURN_TYPE control_loop(void* args)
                          robot.get_base_gyroscope());
             print_vector("act imu lin acc                ",
                          robot.get_base_linear_acceleration());
-            rt_printf("act e-stop                     : %s\n",
-                      robot.get_active_estop() ? "true" : "false");
+            /*rt_printf("act e-stop                     : %s\n",
+                      robot.get_active_estop() ? "true" : "false");*/
             rt_printf("has error                      : %s\n",
                       robot.has_error() ? "true" : "false");
             rt_printf("\n");
             fflush(stdout);
-        }*/ 
+        } 
         ++count;
 
         // Send the current to the motor
         // desired_torque.setZero();
-       // robot.send_target_joint_torque(desired_torque);
+        robot.send_target_joint_torque(desired_torque);
 
         real_time_tools::Timer::sleep_sec(0.001);
     }  // endwhile

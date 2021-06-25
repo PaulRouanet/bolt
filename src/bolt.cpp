@@ -46,10 +46,10 @@ Bolt::Bolt()
     // Network infos.
     network_id_ = "";
 
-    // Slider bos infos.
+/*    // Slider bos infos.
     slider_positions_.setZero();
     active_estop_ = true;  // By default assume the estop is active.
-    slider_box_data_.resize(BOLT_NB_SLIDER + 1, 0);  // 4 sliders + 1 e-stop.
+    slider_box_data_.resize(BOLT_NB_SLIDER + 1, 0);  // 4 sliders + 1 e-stop.*/
 
     // imu infos
     base_accelerometer_.setZero();
@@ -76,9 +76,9 @@ void Bolt::initialize(const std::string& network_id)
     calib_ctrl_ = odri_control_interface::JointCalibratorFromYamlFile(
         ODRI_CONTROL_INTERFACE_YAML_PATH, robot_->joints);
 
-    // Use a serial port to read slider values.
+/*    // Use a serial port to read slider values.
     serial_reader_ = std::make_shared<blmc_drivers::SerialReader>(
-        "serial_port", BOLT_NB_SLIDER + 1);
+        "serial_port", BOLT_NB_SLIDER + 1);*/
 
     // Initialize the robot.
     robot_->Init();
@@ -118,7 +118,7 @@ void Bolt::acquire_sensors()
     // acquire the slider positions
 
 
-    if (serial_reader_->fill_vector(slider_box_data_) > 10)
+    /*if (serial_reader_->fill_vector(slider_box_data_) > 10)
     {
 
         robot_->ReportError();
@@ -135,7 +135,7 @@ void Bolt::acquire_sensors()
         slider_positions_(i) = double(slider_box_data_[i + 1]) / 1024.;
     }
     // acquire the e-stop from the slider box
-    active_estop_ = slider_box_data_[0] == 0;
+    active_estop_ = slider_box_data_[0] == 0;*/
 
     /**
      * The different status.

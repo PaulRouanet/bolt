@@ -38,6 +38,7 @@ static THREAD_FUNCTION_RETURN_TYPE control_loop(void* robot_void_ptr)
         robot.send_target_joint_torque(zero_torques);
         spinner.spin();
         ++count;
+        //printf("count: %d\n", count);
     }
 
     CTRL_C_DETECTED = true;

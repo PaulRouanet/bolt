@@ -19,7 +19,7 @@ static THREAD_FUNCTION_RETURN_TYPE control_loop(void* args)
 //    desired_torque(4,0) = 0.25;
 //    desired_torque(5,0) = 0.15;
     
-    std::cout << "desired_torque(0,0) : " << desired_torque(0,0) << std::endl;
+//    std::cout << "desired_torque(0,0) : " << desired_torque(0,0) << std::endl;
 //    std::cout << "desired_torque(1,0) : " << desired_torque(1,0) << std::endl;
 //    std::cout << "desired_torque(5,0) : " << desired_torque(5,0) << std::endl;
 

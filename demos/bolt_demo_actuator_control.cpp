@@ -14,7 +14,7 @@ static THREAD_FUNCTION_RETURN_TYPE control_loop(void* args)
     double kd = 0.05;
     double t = 0.0;
     double dt = 0.001;
-    double freq = 0.3;
+    double freq = 0.3 * 4;
     double amplitude = (M_PI / 8.0) *2;
     Eigen::Vector6d desired_joint_position = Eigen::Vector6d::Zero();
     Eigen::Vector6d desired_torque = Eigen::Vector6d::Zero();
@@ -74,11 +74,11 @@ static THREAD_FUNCTION_RETURN_TYPE control_loop(void* args)
             Eigen::Vector6d::Ones() * amplitude * sin(2 * 2 * M_PI * freq * t);*/
 
         desired_joint_position(0,0) = initial_joint_positions(0,0) + 0;
-        desired_joint_position(1,0) = initial_joint_positions(1,0) + amplitude * sin(2 * 2 * M_PI * freq * t);
-        desired_joint_position(2,0) = initial_joint_positions(2,0) - amplitude * sin(2 * 2 * M_PI * freq * t);
+        desired_joint_position(1,0) = initial_joint_positions(1,0) + amplitude * sin(2 * M_PI * freq * t);
+        desired_joint_position(2,0) = initial_joint_positions(2,0) - amplitude * sin(2 * M_PI * freq * t);
         desired_joint_position(3,0) = initial_joint_positions(3,0) + 0;
-        desired_joint_position(4,0) = initial_joint_positions(4,0) + amplitude * sin(2 * 2 * M_PI * freq * t);
-        desired_joint_position(5,0) = initial_joint_positions(5,0) - amplitude * sin(2 * 2 * M_PI * freq * t);
+        desired_joint_position(4,0) = initial_joint_positions(4,0) - amplitude * sin(2 * M_PI * freq * t);
+        desired_joint_position(5,0) = initial_joint_positions(5,0) + amplitude * sin(2 * M_PI * freq * t);
         t += dt;
 
         // we implement here a small pd control at the current level

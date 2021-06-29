@@ -69,20 +69,16 @@ static THREAD_FUNCTION_RETURN_TYPE control_loop(void* args)
         motor_enabled = robot.get_motor_enabled();
 
         // Desired pose and vel
-        desired_joint_position =
+/*        desired_joint_position =
             initial_joint_positions +
-            Eigen::Vector6d::Ones() * amplitude * sin(2 * M_PI * freq * t);
-        t += dt;
-        
-//        desired_joint_position(0,0) = initial_joint_positions(0,0) + 0;
-//        desired_joint_position(1,0) = initial_joint_positions(1,0) + 1;
-//        desired_joint_position(2,0) = initial_joint_positions(2,0) - 1;
-//        desired_joint_position(3,0) = initial_joint_positions(3,0) + 0;
-//        desired_joint_position(4,0) = initial_joint_positions(4,0) + 0;
-//        desired_joint_position(5,0) = initial_joint_positions(5,0) + 0;
+            Eigen::Vector6d::Ones() * amplitude * sin(2 * 2 * M_PI * freq * t);*/
 
-        desired_joint_position(0,0) = 0;
-        desired_joint_position(3,0) = 0;
+        desired_joint_position(0,0) = initial_joint_positions(0,0) + 0;
+        desired_joint_position(1,0) = initial_joint_positions(1,0) + amplitude * sin(2 * 2 * M_PI * freq * t);
+        desired_joint_position(2,0) = initial_joint_positions(2,0) - amplitude * sin(2 * 2 * M_PI * freq * t);
+        desired_joint_position(3,0) = initial_joint_positions(3,0) + 0;
+        desired_joint_position(4,0) = initial_joint_positions(4,0) + amplitude * sin(2 * 2 * M_PI * freq * t);
+        desired_joint_position(5,0) = initial_joint_positions(5,0) - amplitude * sin(2 * 2 * M_PI * freq * t);
         t += dt;
 
         // we implement here a small pd control at the current level
@@ -106,9 +102,9 @@ static THREAD_FUNCTION_RETURN_TYPE control_loop(void* args)
             print_vector("act joint_pos                  ", robot.get_joint_positions());
             print_vector("act joint_vel                  ", robot.get_joint_velocities());
             print_vector("act joint torq                 ",
-                         robot.get_joint_target_torques());
-            print_vector("act joint target torq          ",
                          robot.get_joint_torques());
+            print_vector("act joint target torq          ",
+                         robot.get_joint_target_torques());
             print_vector("act imu quat                   ",
                          robot.get_base_attitude_quaternion());
             print_vector("act imu rpy                    ",
@@ -133,6 +129,7 @@ static THREAD_FUNCTION_RETURN_TYPE control_loop(void* args)
         robot.send_target_joint_torque(desired_torque);
 
         real_time_tools::Timer::sleep_sec(0.001);
+//        spinner.spin();
     }  // endwhile
     return THREAD_FUNCTION_RETURN_VALUE;
 }  // end control_loop

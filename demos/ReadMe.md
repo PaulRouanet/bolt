@@ -51,7 +51,9 @@ After that, you have to switch on the robot : the alimentation (25V, ~1A), and s
 
 Then, you can send the executable to the robot. We will take the example of bolt_demo_actuator_control.cpp to illustrate the command to send in the shell.
 
-`sudo -E "PYTHONPATH=$PYTHONPATH" "LD_LIBRARY_PATH=$LD_LIBRARY_PATH" /usr/bolt_ws/build/bolt/demos/bolt_demo_actuator_control enp3s0`
+```
+sudo -E "PYTHONPATH=$PYTHONPATH" "LD_LIBRARY_PATH=$LD_LIBRARY_PATH" /usr/bolt_ws/build/bolt/demos/bolt_demo_actuator_control enp3s0
+```
 
 Here you are, the robot will realize the action of the code sent !
 

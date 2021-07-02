@@ -27,11 +27,13 @@ find_package(yaml_utils REQUIRED)
 find_package(PythonModules REQUIRED COMPONENTS robot_properties_bolt)
 
 # optional dependencies.
-find_package(dynamic_graph_manager QUIET)
+#find_package(dynamic_graph_manager QUIET)
 
 # Export de dependencies.
+#ament_export_dependencies(blmc_drivers odri_control_interface real_time_tools
+#                          yaml_utils dynamic_graph_manager)
 ament_export_dependencies(blmc_drivers odri_control_interface real_time_tools
-                          yaml_utils dynamic_graph_manager)
+                          yaml_utils)
 
 # prepare the final export
 ament_export_interfaces(export_${PROJECT_NAME} HAS_LIBRARY_TARGET)

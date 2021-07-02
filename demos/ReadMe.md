@@ -30,7 +30,7 @@ How to use Bolt at LAAS-CNRS to do demonstrations (calibration, control and sens
   
 ## How to compile at LAAS ? (on ONTAKE computer)
 
-Put the workspace at the root, in usr. Ex : /usr/bolt_ws. Then, put all source codes needed in a directory named /src.
+Put the workspace at the root, in usr. Ex : `/usr/bolt_ws`. Then, put all source codes needed in a directory named `/src`.
 ```
 mkdir /usr/bolt_ws/src
 cp <@SourceCodes> /usr/bolt_ws/src
@@ -48,7 +48,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/bolt_ws/install/odri_control_interf
 export PYTHONPATH=/usr/bolt_ws/src/boltpython:/usr/bolt_ws/install/odri_control_interface/lib/python3.8/site-packages:/usr/bolt_ws/install/mpi_cmake_modules/lib/python3.8/site-packages:/usr/bolt_ws/install/master_board_sdk/lib/python3.8/site-packages:/usr/bolt_ws/install/control_msgs/lib/python3.8/site-packages:/opt/ros/foxy/lib/python3.8/site-packages:/opt/openrobots/lib/python3.8/site-packages:$PYTHONPATH
 ```
 
-When it is done, you are ready to compile. Always in /usr/bolt_ws :
+When it is done, you are ready to compile. Always in `/usr/bolt_ws` :
 ```
 colcon build --packages-up-to bolt
 ```

@@ -28,7 +28,7 @@ static THREAD_FUNCTION_RETURN_TYPE control_loop(void* args)
     
     Eigen::Vector6d zero_torques = Eigen::Vector6d::Zero();
 
-    robot.wait_until_ready();
+    //robot.wait_until_ready();
 
     // ask for calibration
     robot.request_calibration();

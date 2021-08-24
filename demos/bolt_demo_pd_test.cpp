@@ -34,7 +34,7 @@ static THREAD_FUNCTION_RETURN_TYPE control_loop(void* args)
 
     rt_printf("control loop started \n");
 
-    robot.wait_until_ready();
+    //robot.wait_until_ready();
 
     size_t count = 0;
     while (!CTRL_C_DETECTED)
